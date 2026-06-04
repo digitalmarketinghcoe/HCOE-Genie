@@ -117,9 +117,5 @@ function QuizShell() {
 }
 
 export default function GenieApp() {
-  return (
-    <QuizProvider>
-      <QuizShell />
-    </QuizProvider>
-  );
+  return <QuizShell />;
 }

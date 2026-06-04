@@ -3,9 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ChevronDown, Menu, X, GraduationCap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useQuiz } from "@/context/QuizContext";
 
 const PROGRAMS_NAV = [
   { label: "Computer Engineering",          short: "BCT",      href: "/programs/bct",    emoji: "⚡", color: "#00F2FE" },
@@ -18,8 +19,19 @@ const PROGRAMS_NAV = [
 
 export default function Navbar() {
   const pathname  = usePathname();
+  const router = useRouter();
+  const { startGame } = useQuiz();
   const [dropOpen, setDropOpen]   = useState(false);
   const [mobileOpen, setMobile]   = useState(false);
+
+  const handleFindProgram = (e) => {
+    e.preventDefault();
+    if (pathname !== "/") {
+      router.push("/");
+    }
+    startGame();
+    if (mobileOpen) setMobile(false);
+  };
 
   const isHome     = pathname === "/";
   const isPrograms = pathname?.startsWith("/programs");
@@ -120,14 +132,14 @@ export default function Navbar() {
 
         {/* ── Right: CTA + mobile hamburger ── */}
         <div className="flex items-center gap-2">
-          <Link
-            href="/"
+          <button
+            onClick={handleFindProgram}
             className="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-[#0d1117] transition-all hover:opacity-90 active:scale-95"
             style={{ background: "linear-gradient(135deg, #00F2FE, #9B5DE5)" }}
           >
             <GraduationCap size={15} />
             Find My Program
-          </Link>
+          </button>
 
           <button
             className="md:hidden p-2 rounded-xl text-white/60 hover:text-white hover:bg-white/8 transition-all"
@@ -177,15 +189,14 @@ export default function Navbar() {
                   </span>
                 </Link>
               ))}
-              <Link
-                href="/"
-                onClick={() => setMobile(false)}
+              <button
+                onClick={handleFindProgram}
                 className="mt-2 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-bold text-[#0d1117]"
                 style={{ background: "linear-gradient(135deg, #00F2FE, #9B5DE5)" }}
               >
                 <GraduationCap size={15} />
                 Find My Program
-              </Link>
+              </button>
             </div>
           </motion.div>
         )}
