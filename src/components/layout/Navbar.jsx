@@ -42,7 +42,7 @@ export default function Navbar() {
 
         {/* ── Logo ── */}
         <Link href="/" className="flex items-center gap-3 shrink-0 group">
-          <div className="relative size-9 overflow-hidden rounded-full ring-1 ring-white/10 group-hover:ring-white/25 transition-all">
+          <div className="relative size-12 overflow-hidden rounded-full ring-1 ring-white/10 group-hover:ring-white/25 transition-all">
             <Image
               src="/assets/Himalaya_Logo.png"
               alt="HCOE Logo"
@@ -51,12 +51,17 @@ export default function Navbar() {
               priority
             />
           </div>
-          <div className="leading-tight">
-            <div className="text-[0.8rem] font-extrabold text-white tracking-tight leading-none">
-              Himalaya College
+          <div className="flex items-center">
+            <div className="leading-tight">
+              <div className="text-[1.2rem] font-black text-white tracking-tight leading-none">
+                Himalaya College
+              </div>
+              <div className="text-[1rem] text-white tracking-wide font-medium">
+                of Engineering
+              </div>
             </div>
-            <div className="text-[0.65rem] text-white/40 tracking-wide">
-              of Engineering
+            <div className="hidden sm:block border-l border-white ml-3.5 pl-3.5 text-[0.7rem] text-white leading-tight max-w-[160px]">
+              Accredited by University Grants Commission (UGC), Nepal, 2026
             </div>
           </div>
         </Link>
