@@ -129,7 +129,7 @@ export default function ProgramPage({ program }) {
             </div>
 
             <p className="text-lg font-semibold text-white/80">
-              "{program.tagline}"
+              &ldquo;{program.tagline}&rdquo;
             </p>
 
             <p className="text-sm text-white/65 leading-relaxed">

@@ -36,7 +36,7 @@ export default function Footer() {
             </div>
             <p className="text-xs text-white/35 leading-relaxed max-w-[220px]">
               Affiliated to Institute of Engineering (IOE), Tribhuvan University.
-              Shaping engineers who build Nepal's future.
+              Shaping engineers who build Nepal&apos;s future.
             </p>
             <div className="text-xs text-white/25">
               📍 Chyasal, Lalitpur, Nepal

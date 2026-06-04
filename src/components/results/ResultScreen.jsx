@@ -214,7 +214,7 @@ export default function ResultScreen() {
                       {program.shortTag}
                     </div>
                     <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">{program.name}</h2>
-                    <p className="text-sm text-white/55 mt-1 font-medium italic">"{program.tagline}"</p>
+                    <p className="text-sm text-white/55 mt-1 font-medium italic">&ldquo;{program.tagline}&rdquo;</p>
                   </div>
                 </div>
 

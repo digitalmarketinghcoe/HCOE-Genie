@@ -103,7 +103,7 @@ export default function ShareCard({ program, compatibilityPct, archetype }) {
         </motion.button>
       </div>
       <p className="text-center text-[0.65rem] text-white/20">
-        "Challenge Friends" copies a personalised dare to send your crew
+        &ldquo;Challenge Friends&rdquo; copies a personalised dare to send your crew
       </p>
     </div>
   );

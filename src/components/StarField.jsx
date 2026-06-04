@@ -6,6 +6,7 @@ export default function StarField() {
   const [stars, setStars] = useState([]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setStars(
       Array.from({ length: 60 }, (_, i) => ({
         id: i,
