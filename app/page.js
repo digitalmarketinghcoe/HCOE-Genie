@@ -1,9 +1,9 @@
 import GenieApp from "@/components/GenieApp";
 
 export const metadata = {
-  title: "HCOE Career Genie — Find Your Program",
+  title: "Career Predictor Quiz — Himalaya College of Engineering",
   description:
-    "7 questions. One destiny. Discover exactly which Himalaya College of Engineering program you were built for.",
+    "10 personality questions. Real compatibility scores across all 6 HCOE programs. Find your engineering path.",
 };
 
 export default function Home() {

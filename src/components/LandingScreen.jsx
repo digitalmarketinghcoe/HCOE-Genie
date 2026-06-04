@@ -2,41 +2,42 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Sparkles, ChevronRight, Zap, Brain, TrendingUp, Users, FlaskConical, Building2 } from "lucide-react";
-import { useGraphify } from "@/context/GraphifyContext";
+import { Sparkles, ChevronRight, Zap, Brain, TrendingUp, Building2 } from "lucide-react";
+import Link from "next/link";
+import { useQuiz } from "@/context/QuizContext";
 import { CAMPUS_HIGHLIGHTS } from "@/data/programs";
 
 const PROGRAM_PILLS = [
-  { label: "BCT", color: "#00F2FE", emoji: "⚡" },
-  { label: "BSC.CSIT", color: "#9B5DE5", emoji: "🚀" },
-  { label: "BCA", color: "#F15BB5", emoji: "📱" },
-  { label: "BEI", color: "#FEE440", emoji: "📡" },
-  { label: "BCE", color: "#06D6A0", emoji: "🏗️" },
-  { label: "B.ARCH", color: "#FF6B6B", emoji: "🏛️" },
+  { label: "BCT",      color: "#00F2FE", emoji: "⚡", href: "/programs/bct"    },
+  { label: "BSC.CSIT", color: "#9B5DE5", emoji: "🚀", href: "/programs/csit"   },
+  { label: "BCA",      color: "#F15BB5", emoji: "📱", href: "/programs/bca"    },
+  { label: "BEI",      color: "#FEE440", emoji: "📡", href: "/programs/bei"    },
+  { label: "BCE",      color: "#06D6A0", emoji: "🏗️", href: "/programs/bce"    },
+  { label: "B.ARCH",   color: "#FF6B6B", emoji: "🏛️", href: "/programs/b-arch" },
 ];
 
 const FEATURES = [
   {
     icon: <Brain size={20} />,
     color: "#9B5DE5",
-    title: "Akinator-Style Engine",
-    desc: "10 questions designed by career specialists. No bias, no funneling.",
+    title: "Personality-Based Quiz",
+    desc: "10 conversational questions mapping your instincts, working style, and values to a program.",
   },
   {
     icon: <Zap size={20} />,
     color: "#00F2FE",
-    title: "Graphify Score Matrix",
-    desc: "Real-time compatibility percentages across all 6 programs as you answer.",
+    title: "Real Compatibility Scores",
+    desc: "Live percentages across all 6 programs as you answer — no bias, no funnel.",
   },
   {
     icon: <TrendingUp size={20} />,
     color: "#06D6A0",
-    title: "Viral Career Ladder",
-    desc: "Your full roadmap: Year 1 clubs → Mid-degree projects → Industry legacy.",
+    title: "Career Roadmap",
+    desc: "Year 1 foundations → industry projects → career outcomes, mapped for your program.",
   },
 ];
 
-function StatCard({ value, label, emoji }) {
+function StatCard({ value, label }) {
   return (
     <div className="flex flex-col items-center gap-1">
       <span className="text-xl font-extrabold text-white">{value}</span>
@@ -70,12 +71,13 @@ function CampusTab({ highlight }) {
 }
 
 export default function LandingScreen() {
-  const { startGame } = useGraphify();
+  const { startGame } = useQuiz();
   const [activeTab, setActiveTab] = useState(0);
 
   return (
     <div className="w-full max-w-2xl mx-auto px-4 pb-16 flex flex-col items-center gap-10">
-      {/* Hero */}
+
+      {/* ── Hero ── */}
       <div className="text-center flex flex-col items-center gap-5 pt-10">
         <motion.div
           initial={{ scale: 0, rotate: -30 }}
@@ -100,7 +102,7 @@ export default function LandingScreen() {
           className="flex items-center gap-2 px-3 py-1 rounded-full border border-cyan/30 bg-cyan/5 text-[#00F2FE] text-[0.7rem] font-bold tracking-[0.15em] uppercase"
         >
           <Sparkles size={10} />
-          Himalaya College of Engineering × Graphify
+          Himalaya College of Engineering · Career Genie
         </motion.div>
 
         <motion.div
@@ -133,12 +135,14 @@ export default function LandingScreen() {
             </span>
           </h1>
           <p className="mt-3 text-base sm:text-lg text-white/55 max-w-md mx-auto leading-relaxed">
-            10 questions. Real compatibility scores. Your exact HCOE program match —{" "}
-            <span className="text-white/80 font-semibold">and the career roadmap to prove it.</span>
+            10 personality questions. Real compatibility scores.{" "}
+            <span className="text-white/80 font-semibold">
+              Discover which HCOE program you were made for.
+            </span>
           </p>
         </motion.div>
 
-        {/* Program pills */}
+        {/* Program pills — clickable links */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -146,25 +150,29 @@ export default function LandingScreen() {
           className="flex flex-wrap justify-center gap-2"
         >
           {PROGRAM_PILLS.map((p, i) => (
-            <motion.span
+            <motion.div
               key={p.label}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.45 + i * 0.04 }}
-              className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full border"
-              style={{
-                color: p.color,
-                background: `${p.color}10`,
-                borderColor: `${p.color}30`,
-              }}
             >
-              <span>{p.emoji}</span>
-              {p.label}
-            </motion.span>
+              <Link
+                href={p.href}
+                className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full border hover:opacity-80 transition-opacity"
+                style={{
+                  color: p.color,
+                  background: `${p.color}10`,
+                  borderColor: `${p.color}30`,
+                }}
+              >
+                <span>{p.emoji}</span>
+                {p.label}
+              </Link>
+            </motion.div>
           ))}
         </motion.div>
 
-        {/* Stats row */}
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -197,7 +205,7 @@ export default function LandingScreen() {
           >
             <span className="relative z-10 flex items-center gap-2.5">
               <span className="text-xl">✨</span>
-              Summon My Destiny
+              Discover My Program
               <ChevronRight size={18} />
             </span>
             <motion.div
@@ -207,11 +215,11 @@ export default function LandingScreen() {
               transition={{ duration: 0.45, ease: "easeInOut" }}
             />
           </motion.button>
-          <p className="text-xs text-white/25">Free · No signup · Saves progress automatically</p>
+          <p className="text-xs text-white/25">Free · No sign-up · Progress auto-saved</p>
         </motion.div>
       </div>
 
-      {/* Feature strip */}
+      {/* ── Feature strip ── */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -233,67 +241,63 @@ export default function LandingScreen() {
         ))}
       </motion.div>
 
-      {/* Campus Highlights */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.9 }}
-        className="w-full"
-      >
-        <div className="flex items-center gap-2 mb-4">
-          <Building2 size={16} className="text-white/40" />
-          <h2 className="text-sm font-bold tracking-widest text-white/40 uppercase">
-            Life at HCOE
-          </h2>
-        </div>
+      {/* ── Campus Highlights ── */}
+      {/* {CAMPUS_HIGHLIGHTS?.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9 }}
+          className="w-full"
+        >
+          <div className="flex items-center gap-2 mb-4">
+            <Building2 size={16} className="text-white/40" />
+            <h2 className="text-sm font-bold tracking-widest text-white/40 uppercase">Life at HCOE</h2>
+          </div>
 
-        {/* Tab bar */}
-        <div className="flex gap-1 mb-4 p-1 rounded-xl bg-white/[0.03] border border-white/8">
-          {CAMPUS_HIGHLIGHTS.map((h, i) => (
-            <button
-              key={h.category}
-              onClick={() => setActiveTab(i)}
-              className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-semibold transition-all"
-              style={
-                activeTab === i
-                  ? { background: "rgba(255,255,255,0.08)", color: "white" }
-                  : { color: "rgba(255,255,255,0.35)" }
-              }
+          <div className="flex gap-1 mb-4 p-1 rounded-xl bg-white/[0.03] border border-white/8">
+            {CAMPUS_HIGHLIGHTS.map((h, i) => (
+              <button
+                key={h.category}
+                onClick={() => setActiveTab(i)}
+                className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-semibold transition-all"
+                style={
+                  activeTab === i
+                    ? { background: "rgba(255,255,255,0.08)", color: "white" }
+                    : { color: "rgba(255,255,255,0.35)" }
+                }
+              >
+                <span>{h.emoji}</span>
+                <span className="hidden sm:inline">{h.category}</span>
+              </button>
+            ))}
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2 }}
             >
-              <span>{h.emoji}</span>
-              <span className="hidden sm:inline">{h.category}</span>
-            </button>
-          ))}
-        </div>
+              <CampusTab highlight={CAMPUS_HIGHLIGHTS[activeTab]} />
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
+      )} */}
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.2 }}
-          >
-            <CampusTab highlight={CAMPUS_HIGHLIGHTS[activeTab]} />
-          </motion.div>
-        </AnimatePresence>
-      </motion.div>
-
-      {/* Social proof */}
-      <motion.div
+      {/* ── Testimonials ── */}
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.1 }}
         className="w-full rounded-2xl border border-white/8 bg-white/[0.02] p-5 flex flex-col gap-3"
       >
-        <div className="flex items-center gap-2">
-          <Users size={15} className="text-white/30" />
-          <span className="text-xs font-bold tracking-widest text-white/30 uppercase">Student Voices</span>
-        </div>
+        <div className="text-xs font-bold tracking-widest text-white/30 uppercase mb-1">Student Voices</div>
         <div className="grid sm:grid-cols-2 gap-3">
           {[
-            { quote: "I was choosing between BCT and BEI for months. Genie got it right in 3 minutes.", name: "Rajan S.", prog: "BEI '27", color: "#FEE440" },
-            { quote: "Thought I was a CSIT person. Turns out my builder instinct screamed BCA. Genie didn't lie.", name: "Priya M.", prog: "BCA '26", color: "#F15BB5" },
+            { quote: "I was torn between BCT and BEI for months. The quiz nailed it in 3 minutes.", name: "Rajan S.", prog: "BEI '27", color: "#FEE440" },
+            { quote: "Thought I was a CSIT person. Turns out BCA matched my builder mindset perfectly.", name: "Priya M.", prog: "BCA '26", color: "#F15BB5" },
           ].map((t) => (
             <div key={t.name} className="flex flex-col gap-2 p-3 rounded-xl bg-white/[0.03]">
               <p className="text-xs text-white/60 leading-relaxed italic">"{t.quote}"</p>
@@ -310,9 +314,8 @@ export default function LandingScreen() {
             </div>
           ))}
         </div>
-      </motion.div>
+      </motion.div> */}
 
-      {/* Footer */}
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

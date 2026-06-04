@@ -2,32 +2,34 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { useGraphify } from "@/context/GraphifyContext";
+import { useQuiz } from "@/context/QuizContext";
 import FlashCard from "./FlashCard";
 import ProgressBar from "./ProgressBar";
 
 const CELEBRATION_MESSAGES = [
-  "Interesting choice. The Genie is watching. 👀",
-  "That's telling. Real different. 🔥",
-  "Bold move. Your DNA is revealing itself. ✨",
-  "The graph is updating. 📊",
-  "Noted. This is getting specific. 🎯",
-  "That trait is locked in. 🧬",
-  "The Genie didn't see that coming. 😤",
-  "Pattern recognized. Almost there. ⚡",
-  "The final picture is forming. 🔮",
-  "Last one. This changes everything. 👑",
+  "Interesting. That says a lot about you. 🔍",
+  "Noted. The picture is forming. ✨",
+  "Bold choice. Keep going. 🔥",
+  "That's telling. Really telling. 💡",
+  "Pattern emerging. Stay honest. 🎯",
+  "That one was revealing. 🧠",
+  "Halfway there. Don't overthink it. ⚡",
+  "Almost there. One more layer. 🌀",
+  "The final pattern is taking shape. 🔮",
+  "Last one. Make it count. 👑",
 ];
+
+const PROGRAM_COLORS = {
+  BCT: "#00F2FE", CSIT: "#9B5DE5", BCA: "#F15BB5",
+  BEI: "#FEE440", BCE: "#06D6A0", BARCH: "#FF6B6B",
+};
 
 export default function GameEngine() {
   const {
-    currentQuestion,
-    currentQuestionIndex,
-    totalQuestions,
-    progress,
-    submitAnswer,
-    rankedResults,
-  } = useGraphify();
+    currentQuestion, currentQuestionIndex,
+    totalQuestions, progress,
+    submitAnswer, rankedResults,
+  } = useQuiz();
 
   const [celebrate, setCelebrate] = useState(null);
 
@@ -37,7 +39,7 @@ export default function GameEngine() {
     setTimeout(() => {
       setCelebrate(null);
       submitAnswer(option, currentQuestion?.id);
-    }, 650);
+    }, 600);
   }
 
   if (!currentQuestion) return null;
@@ -46,15 +48,12 @@ export default function GameEngine() {
 
   return (
     <div className="w-full max-w-2xl mx-auto px-4 py-6 flex flex-col gap-5">
-      {/* Progress + live preview */}
-      <div className="flex flex-col gap-3">
-        <ProgressBar
-          progress={progress}
-          current={currentQuestionIndex + 1}
-          total={totalQuestions}
-        />
 
-        {/* Live compatibility peek — shown after first answer */}
+      {/* Progress */}
+      <div className="flex flex-col gap-3">
+        <ProgressBar progress={progress} current={currentQuestionIndex + 1} total={totalQuestions} />
+
+        {/* Live leading program */}
         <AnimatePresence>
           {currentQuestionIndex > 0 && topSoFar && (
             <motion.div
@@ -64,23 +63,23 @@ export default function GameEngine() {
               className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/[0.03] border border-white/6 overflow-hidden"
             >
               <span className="text-[0.65rem] text-white/30 font-mono uppercase tracking-wider">
-                Leading →
+                Currently leading →
               </span>
-              <span className="text-[0.75rem] font-extrabold" style={{ color: {
-                BCT: "#00F2FE", CSIT: "#9B5DE5", BCA: "#F15BB5",
-                BEI: "#FEE440", BCE: "#06D6A0", BARCH: "#FF6B6B",
-              }[topSoFar.node] }}>
+              <span
+                className="text-[0.75rem] font-extrabold"
+                style={{ color: PROGRAM_COLORS[topSoFar.node] }}
+              >
                 {topSoFar.node}
               </span>
               <span className="text-[0.65rem] text-white/25">
-                ({topSoFar.pct ?? 0}% compat)
+                ({topSoFar.pct ?? 0}% match)
               </span>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* Question card */}
+      {/* Question + options */}
       <AnimatePresence mode="wait">
         {celebrate ? (
           <motion.div
@@ -98,7 +97,9 @@ export default function GameEngine() {
             >
               ✨
             </motion.div>
-            <p className="text-base font-bold text-white/80 text-center px-6">{celebrate}</p>
+            <p className="text-base font-bold text-white/80 text-center px-6">
+              {celebrate}
+            </p>
           </motion.div>
         ) : (
           <motion.div
@@ -109,7 +110,6 @@ export default function GameEngine() {
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col gap-4"
           >
-            {/* Question meta */}
             <div className="flex items-center gap-3">
               <span className="text-3xl">{currentQuestion.emoji}</span>
               <div>
@@ -117,17 +117,15 @@ export default function GameEngine() {
                   {currentQuestion.category}
                 </span>
                 <div className="text-[0.7rem] font-mono text-white/20">
-                  Q{currentQuestionIndex + 1} of {totalQuestions}
+                  {currentQuestionIndex + 1} of {totalQuestions}
                 </div>
               </div>
             </div>
 
-            {/* Question text */}
             <h2 className="text-xl sm:text-2xl font-extrabold text-white leading-snug">
               {currentQuestion.question}
             </h2>
 
-            {/* Swipe hint — only on first question */}
             {currentQuestionIndex === 0 && (
               <motion.p
                 initial={{ opacity: 0 }}
@@ -135,11 +133,10 @@ export default function GameEngine() {
                 transition={{ delay: 0.6 }}
                 className="text-xs text-white/25 text-center"
               >
-                Tap to pick · Drag right to lock in
+                Pick the answer that feels most true — no right or wrong answers
               </motion.p>
             )}
 
-            {/* Options */}
             <div className="flex flex-col gap-2.5">
               {currentQuestion.options.map((opt, i) => (
                 <FlashCard

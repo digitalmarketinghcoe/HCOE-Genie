@@ -1,6 +1,20 @@
+export const PROGRAM_SLUGS = {
+  BCT:   "bct",
+  CSIT:  "csit",
+  BCA:   "bca",
+  BEI:   "bei",
+  BCE:   "bce",
+  BARCH: "b-arch",
+};
+
+export const SLUG_TO_ID = Object.fromEntries(
+  Object.entries(PROGRAM_SLUGS).map(([id, slug]) => [slug, id])
+);
+
 export const PROGRAMS = {
   BCT: {
     id: "BCT",
+    slug: "bct",
     name: "Computer Engineering",
     degree: "B.E. in Computer Engineering",
     shortTag: "BCT",
@@ -80,6 +94,7 @@ export const PROGRAMS = {
 
   CSIT: {
     id: "CSIT",
+    slug: "csit",
     name: "Computer Science & IT",
     degree: "B.Sc. in Computer Science & Information Technology",
     shortTag: "BSC.CSIT",
@@ -159,6 +174,7 @@ export const PROGRAMS = {
 
   BCA: {
     id: "BCA",
+    slug: "bca",
     name: "Computer Applications",
     degree: "Bachelor of Computer Applications",
     shortTag: "BCA",
@@ -238,6 +254,7 @@ export const PROGRAMS = {
 
   BEI: {
     id: "BEI",
+    slug: "bei",
     name: "Electronics, Communication & Information Engineering",
     degree: "B.E. in Electronics, Communication & Information Engineering",
     shortTag: "BEI",
@@ -317,6 +334,7 @@ export const PROGRAMS = {
 
   BCE: {
     id: "BCE",
+    slug: "bce",
     name: "Civil Engineering",
     degree: "B.E. in Civil Engineering",
     shortTag: "BCE",
@@ -396,6 +414,7 @@ export const PROGRAMS = {
 
   BARCH: {
     id: "BARCH",
+    slug: "b-arch",
     name: "Architecture",
     degree: "B.Arch in Architecture",
     shortTag: "B.ARCH",
