@@ -101,7 +101,6 @@ function CareerOutcomes({ outcomes }) {
             <div className="text-sm font-semibold text-white">{o.role}</div>
             <div className="text-xs text-white/40">{o.company}</div>
           </div>
-          <div className="text-xs font-bold text-white/50 shrink-0">{o.salary}</div>
         </motion.div>
       ))}
     </div>

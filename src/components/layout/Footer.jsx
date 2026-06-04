@@ -45,7 +45,7 @@ export default function Footer() {
 
           {/* Programs column */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-xs font-bold tracking-widest text-white/35 uppercase">
+            <h4 className="text-xs font-bold tracking-widest text-white/75 uppercase">
               Programs
             </h4>
             <ul className="flex flex-col gap-2">
@@ -64,7 +64,7 @@ export default function Footer() {
 
           {/* Tools column */}
           <div className="flex flex-col gap-3">
-            <h4 className="text-xs font-bold tracking-widest text-white/35 uppercase">
+            <h4 className="text-xs font-bold tracking-widest text-white/75 uppercase">
               Tools
             </h4>
             <ul className="flex flex-col gap-2">

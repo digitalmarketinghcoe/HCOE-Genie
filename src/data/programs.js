@@ -50,10 +50,10 @@ export const PROGRAMS = {
       reason: "Your hardware instinct is strong. If signals had more pull than code, BEI would have claimed you.",
     },
     careerOutcomes: [
-      { role: "AI/ML Engineer", company: "Google DeepMind / FAANG", salary: "₹80-150 LPA" },
-      { role: "Systems Architect", company: "Intel / AMD / Qualcomm", salary: "₹70-120 LPA" },
-      { role: "CTO / Principal Engineer", company: "Deep-tech Startups", salary: "Equity + ₹60-100 LPA" },
-      { role: "Embedded Systems Lead", company: "Aerospace / Automotive", salary: "₹50-90 LPA" },
+      { role: "AI/ML Engineer", company: "Google DeepMind / FAANG" },
+      { role: "Systems Architect", company: "Intel / AMD / Qualcomm" },
+      { role: "CTO / Principal Engineer", company: "Deep-tech Startups" },
+      { role: "Embedded Systems Lead", company: "Aerospace / Automotive" },
     ],
     careerLadder: [
       {
@@ -130,10 +130,10 @@ export const PROGRAMS = {
       reason: "If you'd leaned more into the hardware-software boundary instead of pure software, BCT was calling.",
     },
     careerOutcomes: [
-      { role: "Software Engineer", company: "Google / Microsoft / Meta", salary: "₹70-130 LPA" },
-      { role: "Data Scientist / ML Engineer", company: "Fintech / HealthTech", salary: "₹60-110 LPA" },
-      { role: "Cloud Solutions Architect", company: "AWS / Azure / GCP", salary: "₹80-140 LPA" },
-      { role: "CTO / Startup Founder", company: "Self-funded", salary: "Equity + ₹40-80 LPA" },
+      { role: "Software Engineer", company: "Google / Microsoft / Meta" },
+      { role: "Data Scientist / ML Engineer", company: "Fintech / HealthTech" },
+      { role: "Cloud Solutions Architect", company: "AWS / Azure / GCP" },
+      { role: "CTO / Startup Founder", company: "Self-funded" },
     ],
     careerLadder: [
       {
@@ -210,10 +210,10 @@ export const PROGRAMS = {
       reason: "If systems architecture had more pull than shipping products, CSIT would have been your path.",
     },
     careerOutcomes: [
-      { role: "Mobile App Developer", company: "Fintech / HealthTech Product Companies", salary: "₹40-80 LPA" },
-      { role: "Full-Stack Developer", company: "SaaS Startups", salary: "₹35-70 LPA" },
-      { role: "Product Manager", company: "Tech Unicorns", salary: "₹50-100 LPA" },
-      { role: "Indie Hacker / App Founder", company: "Self-funded", salary: "Revenue dependent" },
+      { role: "Mobile App Developer", company: "Fintech / HealthTech Product Companies" },
+      { role: "Full-Stack Developer", company: "SaaS Startups" },
+      { role: "Product Manager", company: "Tech Unicorns" },
+      { role: "Indie Hacker / App Founder", company: "Self-funded" },
     ],
     careerLadder: [
       {
@@ -244,7 +244,7 @@ export const PROGRAMS = {
         icon: "👑",
         items: [
           "Senior Mobile Developer at a top product company",
-          "Product Manager running a $10M ARR product",
+          "Product Manager running a large-scale product",
           "Founder of a Y Combinator-backed startup",
           "Angel investor advising the next generation of builders",
         ],
@@ -290,10 +290,10 @@ export const PROGRAMS = {
       reason: "If software had pulled harder than signals, you'd have been designing processors instead of programming them.",
     },
     careerOutcomes: [
-      { role: "Network Engineer", company: "Cisco / Huawei / Nokia / Ericsson", salary: "₹50-100 LPA" },
-      { role: "IoT Solutions Architect", company: "Smart City Projects / UNDP", salary: "₹45-85 LPA" },
-      { role: "Robotics Engineer", company: "Aerospace / Defense / Automotive", salary: "₹60-110 LPA" },
-      { role: "Hardware Startup Founder", company: "Deep-tech", salary: "Equity + ₹40-80 LPA" },
+      { role: "Network Engineer", company: "Cisco / Huawei / Nokia / Ericsson" },
+      { role: "IoT Solutions Architect", company: "Smart City Projects / UNDP" },
+      { role: "Robotics Engineer", company: "Aerospace / Defense / Automotive" },
+      { role: "Hardware Startup Founder", company: "Deep-tech" },
     ],
     careerLadder: [
       {
@@ -370,10 +370,10 @@ export const PROGRAMS = {
       reason: "If aesthetics had pulled as hard as structural physics, you'd be designing spaces, not calculating their loads.",
     },
     careerOutcomes: [
-      { role: "Project Manager", company: "Infrastructure Firms / ICIMOD / World Bank", salary: "₹45-90 LPA" },
-      { role: "Structural Engineer", company: "High-rise & Earthquake-resistant Buildings", salary: "₹40-80 LPA" },
-      { role: "Infrastructure Lead", company: "UNDP, ADB, Asian Infrastructure Fund", salary: "₹60-120 LPA" },
-      { role: "Civil Contractor / Founder", company: "Self-run firm", salary: "Revenue dependent" },
+      { role: "Project Manager", company: "Infrastructure Firms / ICIMOD / World Bank" },
+      { role: "Structural Engineer", company: "High-rise & Earthquake-resistant Buildings" },
+      { role: "Infrastructure Lead", company: "UNDP, ADB, Asian Infrastructure Fund" },
+      { role: "Civil Contractor / Founder", company: "Self-run firm" },
     ],
     careerLadder: [
       {
@@ -450,10 +450,10 @@ export const PROGRAMS = {
       reason: "If structural physics had called louder than spatial aesthetics, you'd have been calculating loads instead of light.",
     },
     careerOutcomes: [
-      { role: "Principal Architect", company: "Top Global Architecture Studios", salary: "₹50-100 LPA" },
-      { role: "Urban Planner", company: "Smart City Commissions / UN-Habitat", salary: "₹45-90 LPA" },
-      { role: "Heritage Conservation Specialist", company: "UNESCO / DOA Nepal", salary: "₹40-75 LPA" },
-      { role: "Architecture Firm Founder", company: "Own studio", salary: "Revenue dependent" },
+      { role: "Principal Architect", company: "Top Global Architecture Studios" },
+      { role: "Urban Planner", company: "Smart City Commissions / UN-Habitat" },
+      { role: "Heritage Conservation Specialist", company: "UNESCO / DOA Nepal" },
+      { role: "Architecture Firm Founder", company: "Own studio" },
     ],
     careerLadder: [
       {

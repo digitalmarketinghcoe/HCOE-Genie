@@ -48,7 +48,6 @@ function OutcomeRow({ outcome, index }) {
         <div className="text-sm font-semibold text-white">{outcome.role}</div>
         <div className="text-xs text-white/40 mt-0.5">{outcome.company}</div>
       </div>
-      <div className="text-xs font-bold text-white/45 shrink-0">{outcome.salary}</div>
     </motion.div>
   );
 }
@@ -269,8 +268,8 @@ export default function ProgramPage({ program }) {
         </motion.div>
 
         {/* Disclaimer */}
-        <p className="text-xs text-white/20 text-center pb-6">
-          ⚠️ Career outcomes and salary figures are indicative. Actual results depend on individual effort,
+        <p className="text-xs text-white/90 text-center pb-6">
+          ⚠️ Career outcomes are indicative. Actual results depend on individual effort,
           market conditions, and continual skill development.
         </p>
 
